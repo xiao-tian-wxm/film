@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="gec.entity.Filminfo" table="filminfo" schema="hiberdb">
+        <id name="filmid">
+            <column name="FILMID" sql-type="int(11)"/>
+            <generator class="identity"></generator>
+        </id>
+        <property name="filmname">
+            <column name="FILMNAME" sql-type="varchar(50)" length="50"/>
+        </property>
+        <property name="actor">
+            <column name="ACTOR" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="director">
+            <column name="DIRECTOR" sql-type="varchar(50)" length="50" not-null="true"/>
+        </property>
+        <property name="ticketprice">
+            <column name="TICKETPRICE" sql-type="decimal(10,2)" precision="10" scale="2"/>
+        </property>
+        <many-to-one name="filmtype" class="gec.entity.Filmtype">
+            <column name="TYPEID"/>
+        </many-to-one>
+    </class>
+</hibernate-mapping>
